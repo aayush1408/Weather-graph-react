@@ -14,14 +14,12 @@ class App extends Component {
   }
   // getting the coordinates from the child component
   getCoordinates = (lat, long) => {
-    console.log(lat, long)
     this.setState({
       lat, long
     });
   }
   render() {
     const { lat, long } = this.state
-    console.log(lat, long);
     return (
       <div className="App">
         <Header>

@@ -12,7 +12,7 @@ export default class Weather extends React.Component {
       humidity: [],
       pressure: [],
       name: '',
-      loading: false
+      error: false
     }
   }
 
@@ -46,13 +46,14 @@ export default class Weather extends React.Component {
         name,
         temp,
         humidity,
-        pressure
+        pressure,
+        error: false
       });
     }
     catch (e) {
       console.log(e);
       this.setState({
-        loading: true
+        error: true
       })
     }
   }
@@ -71,7 +72,7 @@ export default class Weather extends React.Component {
   render() {
     return (
       <>
-        {this.state.loading ||
+        {this.state.error ||
           <div>
             <TempDisplay data={this.state.temp} name={this.state.name} />
             <table className="table table-hover">

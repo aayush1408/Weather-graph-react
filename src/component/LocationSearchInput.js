@@ -18,6 +18,7 @@ export default class LocationSearchInput extends Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
+        // passing coordinates to the parent component
         this.props.getCoordinates(latLng.lat, latLng.lng)
       })
       .catch(error => console.error('Error', error));
