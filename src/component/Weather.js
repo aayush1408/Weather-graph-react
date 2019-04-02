@@ -33,8 +33,7 @@ export default class Weather extends React.Component {
 
   fetchDetails = async () => {
     const { lat, long } = this.props;
-    console.log('props', lat, long);
-    const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast/?appid=${API_KEY}`;
+    const ROOT_URL = `https://api.openweathermap.org/data/2.5/forecast/?appid=${API_KEY}`;
     const url = `${ROOT_URL}&lat=${lat}&lon=${long}&cnt=5`;
     try {
       const res = await axios(url);
