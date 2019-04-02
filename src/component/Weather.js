@@ -25,8 +25,15 @@ export default class Weather extends React.Component {
     this.fetchDetails();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.fetchDetails();
+    }
+  }
+
   fetchDetails = async () => {
     const { lat, long } = this.props;
+    console.log('props', lat, long);
     const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast/?appid=${API_KEY}`;
     const url = `${ROOT_URL}&lat=${lat}&lon=${long}&cnt=5`;
     try {
@@ -43,6 +50,7 @@ export default class Weather extends React.Component {
       });
     }
     catch (e) {
+      console.log(e);
       this.setState({
         loading: true
       })
