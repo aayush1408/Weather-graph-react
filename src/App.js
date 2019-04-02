@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LocationSearchInput from './component/LocationSearchInput';
+import Weather from './component/Weather';
+import Header from './component/Header';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: '',
+      long: ''
+    }
+  }
+  // getting the coordinates from the child component
+  getCoordinates = (lat, long) => {
+    this.setState({
+      lat, long
+    });
+  }
   render() {
+    const { lat, long } = this.state
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header>
+          Classplus
+        </Header>
+        <LocationSearchInput getCoordinates={this.getCoordinates} />
+        {(lat === '' && long === '') ? <Weather /> : <Weather lat={lat} long={long} />}
       </div>
     );
   }
