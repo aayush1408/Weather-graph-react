@@ -15,4 +15,4 @@ Get the weather API key from [OpenWeatherMap](https://openweathermap.org/api)
 
 Create a `config` directory with `keys.js` file and write the below code
 
-### `export default API_KEY="YOUR_KEY";`
+`export const API_KEY="YOUR_KEY";`
