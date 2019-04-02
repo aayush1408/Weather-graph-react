@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Chart from './Chart';
 import TempDisplay from './TempDisplay';
+import WeatherList from './WeatherList'
 import { API_KEY } from '../config/keys';
 
 export default class Weather extends React.Component {
@@ -69,11 +70,13 @@ export default class Weather extends React.Component {
   }
 
   render() {
+    const { temp, pressure, humidity, name } = this.state;
     return (
       <>
         {this.state.error ||
           <div>
-            <TempDisplay data={this.state.temp} name={this.state.name} />
+            <WeatherList temp={temp[0]} pressure={pressure[0]} humidity={humidity[0]} />
+            <TempDisplay data={temp} name={name} />
             <table className="table table-hover">
               <thead>
                 <tr>
